@@ -1,0 +1,10 @@
+section {
+  padding-left: 20px;
+}
+.sectionTitle {
+  display: inline-flex;
+  font-size: large;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}

@@ -1,0 +1,13 @@
+input {
+  width: 150px;
+}
+.filterBlock {
+  display: flex;
+  flex-direction: column;
+  padding-left: 15px;
+}
+.filterTitle {
+  display: inline-flex;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
