@@ -24,7 +24,7 @@ export default function Form() {
     event.preventDefault();
     console.log(name, number);
 
-    dispatch(addContact({ name, phone: number }));
+    dispatch(addContact({ name, number }));
     setName('');
     setNumber('');
   };
