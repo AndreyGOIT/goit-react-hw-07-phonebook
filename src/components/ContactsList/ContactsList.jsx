@@ -1,22 +1,22 @@
 import { useSelector, useDispatch } from 'react-redux';
+import {
+  selectVisibleContacts,
+  selectIsLoading,
+} from 'redux/contacts/contacts-selectors';
 import styles from './ContactsList.module.css';
-import { getContacts } from 'redux/contacts/contacts-selectors';
-import { deleteContact } from 'redux/contacts/contactsSlice';
-import { getFilter } from 'redux/filter/filter-selectors';
+import { deleteContact } from 'redux/contacts/contacts-operations';
 
 export const ContactsList = () => {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
-  const visibleContacts = contacts.filter(({ name }) =>
-    name.toLowerCase().includes(filter.toLowerCase())
-  );
+  const contacts = useSelector(selectVisibleContacts);
+  const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
-  console.log(visibleContacts);
+
+  console.log(contacts);
   return (
     <section className={styles.section}>
-      {visibleContacts.length > 0 ? (
+      {contacts.length > 0 ? (
         <ul>
-          {visibleContacts.map(({ id, name, number }) => {
+          {contacts.map(({ id, name, number }) => {
             return (
               <li key={id}>
                 {name}: {number}
@@ -25,7 +25,7 @@ export const ContactsList = () => {
                     dispatch(deleteContact(id));
                   }}
                 >
-                  Delete
+                  {isLoading ? 'Deleting' : 'Delete'}
                 </button>
               </li>
             );

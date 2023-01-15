@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { deleteContact } from './contactsSlice';
 
 axios.defaults.baseURL = 'https://63bfe4190cc56e5fb0e18db0.mockapi.io';
 
@@ -32,7 +31,8 @@ export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (id, { rejectWithValue }) => {
     try {
-      await axios.delete('/contacts/${id}', {
+      // await axios.delete('/contacts/${id}', {
+      await axios.delete('/contacts/id', {
         headers: {
           authorization: 'admin',
         },
