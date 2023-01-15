@@ -19,7 +19,7 @@ const contactsSlice = createSlice({
   initialState,
   reducers: {
     filterContacts: (state, { payload }) => {
-      state.filter = payload;
+      state.contacts.filter = payload;
     },
   },
   extraReducers: builder => {
@@ -42,7 +42,7 @@ const contactsSlice = createSlice({
           addContact.pending
         ),
         state => {
-          state.isLoading = true;
+          state.contacts.isLoading = true;
         }
       )
       .addMatcher(
@@ -52,8 +52,8 @@ const contactsSlice = createSlice({
           addContact.fulfilled
         ),
         state => {
-          state.isLoading = false;
-          state.error = null;
+          state.contacts.isLoading = false;
+          state.contacts.error = null;
         }
       )
       .addMatcher(
@@ -63,8 +63,8 @@ const contactsSlice = createSlice({
           addContact.rejected
         ),
         (state, { payload }) => {
-          state.isLoading = false;
-          state.error = payload;
+          state.contacts.isLoading = false;
+          state.contacts.error = payload;
         }
       );
   },

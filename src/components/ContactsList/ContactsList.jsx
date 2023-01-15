@@ -14,26 +14,26 @@ export const ContactsList = () => {
   console.log(contacts);
   return (
     <section className={styles.section}>
-      {/* {contacts.length > 0 ? ( */}
-      <ul>
-        {contacts.map(({ id, name, number }) => {
-          return (
-            <li key={id}>
-              {name}: {number}
-              <button
-                onClick={() => {
-                  dispatch(deleteContact(id));
-                }}
-              >
-                {isLoading ? 'Deleting' : 'Delete'}
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-      {/* ) : (
+      {contacts.length > 0 ? (
+        <ul>
+          {contacts.map(({ id, name, number }) => {
+            return (
+              <li key={id}>
+                {name}: {number}
+                <button
+                  onClick={() => {
+                    dispatch(deleteContact(id));
+                  }}
+                >
+                  {isLoading ? 'Deleting' : 'Delete'}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
         <p>There is no contacts yet</p>
-      )} */}
+      )}
     </section>
   );
 };
