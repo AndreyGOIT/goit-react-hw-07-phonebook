@@ -1,13 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  selectContacts,
+  selectVisibleContacts,
   selectIsLoading,
 } from 'redux/contacts/contacts-selectors';
 import styles from './ContactsList.module.css';
 import { deleteContact } from 'redux/contacts/contacts-operations';
 
 export const ContactsList = () => {
-  const contacts = useSelector(selectContacts);
+  const contacts = useSelector(selectVisibleContacts);
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
