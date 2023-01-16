@@ -1,8 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  selectVisibleContacts,
-  selectIsLoading,
-} from 'redux/contacts/contacts-selectors';
+import { selectVisibleContacts } from 'redux/contacts/contacts-selectors';
 import styles from './ContactsList.module.css';
 import {
   deleteContact,
@@ -12,7 +9,6 @@ import { useEffect } from 'react';
 
 export const ContactsList = () => {
   const contacts = useSelector(selectVisibleContacts);
-  const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,7 +29,7 @@ export const ContactsList = () => {
                     dispatch(deleteContact(id));
                   }}
                 >
-                  {isLoading ? 'Deleting' : 'Delete'}
+                  Delete
                 </button>
               </li>
             );
