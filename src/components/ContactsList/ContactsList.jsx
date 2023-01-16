@@ -4,22 +4,30 @@ import {
   selectIsLoading,
 } from 'redux/contacts/contacts-selectors';
 import styles from './ContactsList.module.css';
-import { deleteContact } from 'redux/contacts/contacts-operations';
+import {
+  deleteContact,
+  fetchContacts,
+} from 'redux/contacts/contacts-operations';
+import { useEffect } from 'react';
 
 export const ContactsList = () => {
   const contacts = useSelector(selectVisibleContacts);
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
-  console.log(contacts);
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
+  // console.log(contacts);
   return (
     <section className={styles.section}>
       {contacts.length > 0 ? (
-        <ul>
-          {contacts.map(({ id, name, number }) => {
+        <ol>
+          {contacts.map(({ id, name, phone }) => {
             return (
               <li key={id}>
-                {name}: {number}
+                {name}: {phone}
                 <button
                   onClick={() => {
                     dispatch(deleteContact(id));
@@ -30,7 +38,7 @@ export const ContactsList = () => {
               </li>
             );
           })}
-        </ul>
+        </ol>
       ) : (
         <p>There is no contacts yet</p>
       )}

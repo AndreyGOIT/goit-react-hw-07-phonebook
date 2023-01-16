@@ -8,3 +8,9 @@ section {
   margin-top: 10px;
   margin-bottom: 15px;
 }
+ul {
+  list-style-type: none;
+}
+button {
+  margin-left: 10px;
+}
